@@ -1,0 +1,33 @@
+@import 'true';
+@import '../scss/your-lib';
+
+// Testing Functions
+@include test-module('Testing Functions') {
+  @include test('Map Add [function]') {
+    
+    $test: add(1, 2);
+    $expect: 3;
+    @include assert-equal($test, $expect,
+      'Returns the sum of two numbers');
+  }
+}
+
+// Testing Mixins
+@include test-module('Write Properites for one breakpoint:') {
+
+   @include test('Font Size [mixin]') {
+    @include assert('Outputs a font size and line height based on keyword.') {
+      @include input {
+        @include outputmixin();
+      }
+
+      @include expect {
+        color: red;
+      }
+    }
+  }
+}
+
+@include report;
+
+
